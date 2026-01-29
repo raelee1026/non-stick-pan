@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>正向愛心 76 BPM</title>
+
+<style>
+:root{
+  --bpm:76;
+  --beat: calc(60s / var(--bpm));
+}
+
+html,body{
+  height:100%;
+  margin:0;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(135deg,#0b1020,#1a0b2e);
+}
+
+svg{
+  width:300px;
+  animation: beat var(--beat) infinite ease-in-out;
+  transform-origin: 50% 50%;
+}
+
+@keyframes beat{
+  0%   { transform: scale(1); }
+  18%  { transform: scale(1.10); }
+  35%  { transform: scale(0.99); }
+  55%  { transform: scale(1.06); }
+  100% { transform: scale(1); }
+}
+
+.hue{
+  animation: hue 6s linear infinite;
+}
+
+@keyframes hue{
+  from{ filter:hue-rotate(0deg); }
+  to  { filter:hue-rotate(360deg); }
+}
+</style>
+</head>
+
+<body>
+
+<!-- 完全置中、正向的愛心 -->
+<svg viewBox="0 0 512 512" role="img" aria-label="愛心">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff4d6d"/>
+      <stop offset="50%" stop-color="#ffb703"/>
+      <stop offset="100%" stop-color="#8338ec"/>
+    </linearGradient>
+  </defs>
+
+  <g class="hue">
+    <!-- 已校正：左右、上下完全對稱 -->
+    <path
+      fill="url(#grad)"
+      d="
+      M256 448
+      C256 448 64 320 64 192
+      C64 128 112 80 176 80
+      C216 80 244 100 256 128
+      C268 100 296 80 336 80
+      C400 80 448 128 448 192
+      C448 320 256 448 256 448 Z
+      "/>
+  </g>
+</svg>
+
+</body>
+</html>
